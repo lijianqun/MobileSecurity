@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#54afff"
+        android:gravity="center"
+        android:text="设置中心"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <com.npp.MobileSecurity.ui.SettingItemView 
+        android:id="@+id/siv_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

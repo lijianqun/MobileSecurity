@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="serviceurl">http://192.168.1.105:8080/updateinfo.html</string>
+
+</resources>
