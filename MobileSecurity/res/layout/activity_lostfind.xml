@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:Pingly="http://schemas.android.com/apk/res/com.npp.MobileSecurity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dip"
+        android:layout_alignParentTop="true"
         android:background="#54afff"
         android:gravity="center"
-        android:text="设置中心"
+        android:text="手机防盗"
         android:textColor="#000000"
         android:textSize="22sp" />
-
-    <com.npp.MobileSecurity.ui.SettingItemView
-        android:id="@+id/siv_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        Pingly:desc_off="自动更新已打开"
-        Pingly:desc_on="自动更新已关闭"
-        Pingly:title="设置是否更新" />
+    
 
 </LinearLayout>

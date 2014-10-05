@@ -20,15 +20,12 @@ public class SettingActivity extends Activity {
 		setContentView(R.layout.setting_activity);
 		siv_update = (SettingItemView) findViewById(R.id.siv_update);
 		sp = getSharedPreferences("config", MODE_PRIVATE);
-		boolean update= sp.getBoolean("update", false);
-		if(update){
+		boolean update = sp.getBoolean("update", false);
+		if (update) {
 			siv_update.setChecked(true);
-			siv_update.setDesc("自动更新已打开");
-			
-		}
-		else{
+
+		} else {
 			siv_update.setChecked(false);
-			siv_update.setDesc("自动更新已关闭");
 		}
 
 		siv_update.setOnClickListener(new OnClickListener() {
@@ -39,11 +36,9 @@ public class SettingActivity extends Activity {
 				// TODO Auto-generated method stub
 				if (siv_update.isChecked()) {// 已经打开自动升级
 					siv_update.setChecked(false);
-					siv_update.setDesc("自动更新已关闭");
 					editor.putBoolean("update", false);
 				} else {// 没有打开自动升级
 					siv_update.setChecked(true);
-					siv_update.setDesc("自动更新已打开");
 					editor.putBoolean("update", true);
 				}
 				editor.commit();

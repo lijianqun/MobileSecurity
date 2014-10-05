@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dip"
         android:layout_marginTop="15dip"
-        android:text="设置是否自动更新"
         android:textColor="#000000"
         android:textSize="20sp" />
 
@@ -19,7 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_title"
         android:layout_marginLeft="12dip"
-        android:text="自动更新已关闭"
         android:textColor="#88000000" />
 
     <View

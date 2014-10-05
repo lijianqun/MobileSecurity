@@ -13,6 +13,8 @@ public class SettingItemView extends RelativeLayout {
 	private TextView tv_desc;
 	private TextView tv_title;
 	private CheckBox cb_status;
+	private String desc_on;
+	private String desc_off;
 
 	/**
 	 * 自定义组合空间。它里面有两个Textview，一个Checkbox和一个view
@@ -31,6 +33,11 @@ public class SettingItemView extends RelativeLayout {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		initView(context);
+		String namespace = "http://schemas.android.com/apk/res/com.npp.MobileSecurity";
+		String title = attrs.getAttributeValue(namespace, "title");
+		desc_on = attrs.getAttributeValue(namespace, "desc_on");
+		desc_off = attrs.getAttributeValue(namespace, "desc_off");
+		tv_title.setText(title);
 	}
 
 	public SettingItemView(Context context) {
@@ -49,9 +56,8 @@ public class SettingItemView extends RelativeLayout {
 		// 把一个布局文件加载在SettingItemView中
 		View.inflate(context, R.layout.setting_item, this);
 		cb_status = (CheckBox) this.findViewById(R.id.cb_status);
-		tv_desc=(TextView) this.findViewById(R.id.tv_desc);
-		tv_title=(TextView) this.findViewById(R.id.tv_title);
-		
+		tv_desc = (TextView) this.findViewById(R.id.tv_desc);
+		tv_title = (TextView) this.findViewById(R.id.tv_title);
 
 	}
 
@@ -60,19 +66,23 @@ public class SettingItemView extends RelativeLayout {
 	 */
 	public boolean isChecked() {
 		return cb_status.isChecked();
-	}	
+	}
+
 	/**
 	 * 设置组和控件的状态
 	 */
-	public void setChecked(boolean checked){
+	public void setChecked(boolean checked) {
+		if (checked) {
+			tv_desc.setText(desc_off);
+		} else {
+			tv_desc.setText(desc_on);
+		}
 		cb_status.setChecked(checked);
 	}
-	/**
+	/*	*//**
 	 * 更新描述信息
 	 */
-	public void setDesc(String desc)
-	{
-		tv_desc.setText(desc);
-	}
-
+	/*
+	 * public void setDesc(String desc) { tv_desc.setText(desc); }
+	 */
 }

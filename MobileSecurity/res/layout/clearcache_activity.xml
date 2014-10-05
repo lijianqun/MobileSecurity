@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_clear_title"
+        style="@style/header"
+        android:text="缓存清理" />
+
+    <FrameLayout
+        android:id="@+id/fl_serech"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_clear_title" >
+
+        <ProgressBar
+            android:id="@+id/pb"
+            style="@style/my_pb_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_scan_statue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="扫描状态"
+            android:textColor="#ffffff" />
+
+        <com.npp.MobileSecurity.ui.SearchDevicesView
+            android:id="@+id/search_device_view"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" >
+        </com.npp.MobileSecurity.ui.SearchDevicesView>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_clear_title"
+        android:layout_marginTop="30dip" >
+
+        <LinearLayout
+            android:id="@+id/ll_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_clear_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_big_submit_normal"
+        android:onClick="clearAllCache"
+        android:text="清理全部缓存" />
+
+</RelativeLayout>

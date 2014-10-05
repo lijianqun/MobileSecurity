@@ -5,20 +5,38 @@
     android:orientation="vertical" >
 
     <TextView
+        style="@style/header"
+        android:text="功能界面" />
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:background="#54afff"
-        android:gravity="center"
-        android:text="功能界面"
-        android:textColor="#000000"
-        android:textSize="22sp" />
+        android:layout_height="260dip" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dip"
+            android:layout_gravity="center"
+            android:background="@color/btn_background"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dip"
+            android:src="@drawable/home_image_selector" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="#44000000" />
 
     <GridView
         android:id="@+id/list_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="3"
         android:layout_marginTop="15dip"
+        android:numColumns="3"
         android:verticalSpacing="10dip" />
 
 </LinearLayout>

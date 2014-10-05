@@ -1,6 +1,7 @@
 package com.npp.MobileSecurity;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -22,6 +23,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -48,6 +50,7 @@ public class SplashActivity extends Activity {
 	protected static final int JSON_ERROR = 2;
 	protected static final int NETWORK_ERROR = 3;
 	protected static final int URL_ERROR = 4;
+	private static final String TAG = "SplashActivity";
 
 	private String description;
 	private String apkurl;
@@ -60,30 +63,29 @@ public class SplashActivity extends Activity {
 		setContentView(R.layout.splash_acvtivity);
 		tv_version = (TextView) findViewById(R.id.tv_version);
 		tv_updata_info = (TextView) findViewById(R.id.tv_updata_info);
-		sp=getSharedPreferences("config", MODE_PRIVATE);
+		sp = getSharedPreferences("config", MODE_PRIVATE);
 		tv_version.setText("版本号:" + getVersionName());
-	
+
 		AlphaAnimation aa = new AlphaAnimation(0.2f, 1.0f);
 		aa.setDuration(1000);
 		findViewById(R.id.rl_root_splash).setAnimation(aa);
-		boolean isupdate =sp.getBoolean("update", false);
-		if(isupdate){
-			//自动检查更新
-			checkupdate();			
-		}
-		else{
-			//不检查更新延迟2秒进入主界面
+		boolean isupdate = sp.getBoolean("update", false);
+		if (isupdate) {
+			// 自动检查更新
+			checkupdate();
+		} else {
+			// 不检查更新延迟2秒进入主界面
 			handler.postDelayed(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
 					EnterHome();
-					
+
 				}
 			}, 2000);
 		}
-		
+		copyDB("antivirus.db");
 	}
 
 	private Handler handler = new Handler() {
@@ -136,16 +138,16 @@ public class SplashActivity extends Activity {
 		AlertDialog.Builder builder = new Builder(this);
 		builder.setTitle("提示升级");
 		builder.setMessage(description);
-	//	builder.setCancelable(false);//强制升级，取消返回按钮和触摸外面区域
+		// builder.setCancelable(false);//强制升级，取消返回按钮和触摸外面区域
 		builder.setOnCancelListener(new OnCancelListener() {
-			
+
 			@Override
 			public void onCancel(DialogInterface dialog) {
 				// TODO Auto-generated method stub
-				//点返回进去主页面
+				// 点返回进去主页面
 				EnterHome();
 				dialog.dismiss();
-				
+
 			}
 		});
 		builder.setPositiveButton("立即升级", new OnClickListener() {
@@ -159,7 +161,7 @@ public class SplashActivity extends Activity {
 					HttpUtils http = new HttpUtils();
 					HttpHandler handler = http.download(apkurl, Environment
 							.getExternalStorageDirectory().getAbsolutePath()
-							+ "/MobileSecurity.apk", true, // 如果目标文件存在，接着未完成的部分继续下载。服务器不支持RANGE时将从新下载。
+							+ "/MobileSecurity.apk", false, // 如果目标文件存在，接着未完成的部分继续下载。服务器不支持RANGE时将从新下载。
 							true, // 如果从请求返回信息中获取到文件名，下载完成后自动重命名。
 							new RequestCallBack<File>() {
 
@@ -187,18 +189,23 @@ public class SplashActivity extends Activity {
 											+ responseInfo.result.getPath());
 									installAPK(responseInfo);
 								}
+
 								/**
 								 * 安装APK
-								 * @param responseInfo 
+								 * 
+								 * @param responseInfo
 								 */
-								private void installAPK(ResponseInfo<File> responseInfo) {
+								private void installAPK(
+										ResponseInfo<File> responseInfo) {
 									// TODO Auto-generated method stub
-									  Intent intent = new Intent();
-									  intent.setAction("android.intent.action.VIEW");
-									  intent.addCategory("android.intent.category.DEFAULT");
-									  intent.setDataAndType(Uri.fromFile(responseInfo.result), "application/vnd.android.package-archive");		  
-									  startActivity(intent);
-									
+									Intent intent = new Intent();
+									intent.setAction("android.intent.action.VIEW");
+									intent.addCategory("android.intent.category.DEFAULT");
+									intent.setDataAndType(
+											Uri.fromFile(responseInfo.result),
+											"application/vnd.android.package-archive");
+									startActivity(intent);
+
 								}
 
 								@Override
@@ -228,6 +235,30 @@ public class SplashActivity extends Activity {
 			}
 		});
 		builder.show();
+
+		new task().execute();
+
+	}
+
+	class task extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected void onProgressUpdate(Void... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+		}
 
 	}
 
@@ -314,6 +345,33 @@ public class SplashActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return "";
+		}
+	}
+
+	/**
+	 * //path 把address.db这个数据库拷贝到data/data/《包名》/files/address.db
+	 */
+	private void copyDB(String filename) {
+		// 只要你拷贝了一次，我就不要你再拷贝了
+		try {
+			File file = new File(getFilesDir(), filename);
+			if (file.exists() && file.length() > 0) {
+				// 正常了，就不需要拷贝了
+				Log.i(TAG, "正常了，就不需要拷贝了");
+			} else {
+				InputStream is = getAssets().open(filename);
+				FileOutputStream fos = new FileOutputStream(file);
+				byte[] buffer = new byte[1024];
+				int len = 0;
+				while ((len = is.read(buffer)) != -1) {
+					fos.write(buffer, 0, len);
+				}
+				is.close();
+				fos.close();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
