@@ -12,6 +12,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -32,6 +34,8 @@ public class HomeActivity extends Activity {
 	private SharedPreferences sp;
 	private AlertDialog dialog;
 	private Intent intent;
+	private ImageView anim_rotation;
+	private ImageView anim_main;
 	private EditText et_setup_pwd;
 	private EditText et_setup_confirm;
 	private Button ok;
@@ -49,6 +53,8 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home_activity);
 		list_home = (GridView) findViewById(R.id.list_home);
+		anim_rotation=(ImageView) findViewById(R.id.anim_rotation);
+		anim_main=(ImageView) findViewById(R.id.anim_main);
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		adapter = new Myadapter();
 		list_home.setAdapter(adapter);
@@ -79,6 +85,11 @@ public class HomeActivity extends Activity {
 							AppManageActivity.class);
 					startActivity(intent);
 					break;
+				case 3://进程管理
+					intent = new Intent(HomeActivity.this,
+							TaskManageAcivity.class);
+					startActivity(intent);
+					break;
 				case 0:
 					ShowLostfindDialog();
 					break;
@@ -89,6 +100,11 @@ public class HomeActivity extends Activity {
 
 			}
 		});
+		Animation hyperspaceJumpAnimation=AnimationUtils.loadAnimation(this, R.anim.av_main_rotation);
+		anim_rotation.startAnimation(hyperspaceJumpAnimation);
+		Animation hyperspaceJump=AnimationUtils.loadAnimation(this, R.anim.av_main_bright);
+		anim_main.startAnimation(hyperspaceJump);
+		anim_main.startAnimation(hyperspaceJump);
 	}
 
 	protected void ShowLostfindDialog() {

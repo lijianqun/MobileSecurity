@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/header"
-        android:text="软件管理" />
+        android:text="进程管理" />
 
     <LinearLayout
         android:id="@+id/nav_layout"

@@ -2,5 +2,8 @@
 <resources>
 
     <color name="btn_background">#F7F7F7</color>
-
+    <color name="default_btn_bg">#00EA15</color>
+    <color name="black_color">#000000</color>
+    <color name="writer_color">#FFFFFF</color>
+    <color name="main_bg" >#15A0F5</color>
 </resources>

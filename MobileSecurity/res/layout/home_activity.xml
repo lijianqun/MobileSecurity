@@ -16,14 +16,30 @@
             android:layout_width="match_parent"
             android:layout_height="260dip"
             android:layout_gravity="center"
-            android:background="@color/btn_background"
+            android:background="@color/main_bg"
             android:orientation="vertical" >
         </LinearLayout>
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:src="@drawable/home_imagebutton_selector" />
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="260dip"
-            android:src="@drawable/home_image_selector" />
+            android:id="@+id/anim_rotation"
+            android:layout_width="178dip"
+            android:layout_height="178dip"
+            android:layout_gravity="center"
+            android:src="@drawable/av_mainscreen_disk_loading" />
+
+        <ImageView
+            android:id="@+id/anim_main"
+            android:layout_width="178dip"
+            android:layout_height="178dip"
+            android:layout_gravity="center"
+            android:src="@drawable/av_main_disk_div1_aperture" />
     </FrameLayout>
 
     <View

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.npp.MobileSecurity"
+    android:installLocation="preferExternal"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -38,6 +39,7 @@
         <activity android:name="com.npp.MobileSecurity.SetupThreeActivity" />
         <activity android:name="com.npp.MobileSecurity.SetupFourActivity" />
         <activity android:name="com.npp.MobileSecurity.AppManageActivity"/>
+        <activity android:name="com.npp.MobileSecurity.TaskManageAcivity"/>
     </application>
 
 </manifest>
