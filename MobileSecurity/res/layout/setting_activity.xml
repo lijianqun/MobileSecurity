@@ -22,4 +22,10 @@
         Pingly:desc_on="自动更新已关闭"
         Pingly:title="设置是否更新" />
 
+    <com.npp.MobileSecurity.ui.SettingItemView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        Pingly:title="分享"
+        android:onClick="share" />
+
 </LinearLayout>

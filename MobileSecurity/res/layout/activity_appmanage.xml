@@ -68,6 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/main_line"
+        android:padding="5dip"
+        android:background="@color/all_background"
         android:fadingEdge="none" />
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -90,6 +91,10 @@ public class AppManageActivity extends Activity {
 		ll_userapp_list = new ListView(this);
 		ll_Sysapp_list = new ListView(this);
 		list_view = new ArrayList<View>();
+		ll_userapp_list.setDividerHeight(6);
+		ll_Sysapp_list.setDividerHeight(6);
+		ll_userapp_list.setDrawingCacheBackgroundColor(Color.WHITE);
+		ll_userapp_list.setScrollContainer(false);
 		list_view.add(ll_userapp_list);
 		list_view.add(ll_Sysapp_list);
 		viewPagerAdapter = new ViewPagerAdapter(list_view);

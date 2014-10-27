@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dip"
-    android:background="@drawable/corners_bg"
+    android:background="@drawable/app_list_corner_round"
     android:orientation="horizontal" >
 
     <ImageView
@@ -26,28 +26,25 @@
             android:id="@+id/tv_appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="应用名称"
-            android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_app_lastUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12Mb | 2014-09-12"
             android:textColor="#414141" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_uninstall"
         android:layout_width="match_parent"
         android:layout_height="35dip"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="5dip"
         android:layout_marginBottom="5dip"
         android:layout_marginRight="5dip"
-        android:background="@drawable/ty_btn_normal"
+        android:layout_marginTop="5dip"
         android:layout_weight="2"
-        android:text="卸载"
-        android:id="@+id/btn_uninstall" />
+        android:background="@drawable/ty_btn_normal"
+        android:text="卸载" />
 
 </LinearLayout>

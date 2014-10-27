@@ -10,7 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * ViewPager适配器
+ * ViewPager閫傞厤鍣�
  * 
  */
 public class ViewPagerAdapter extends PagerAdapter {
@@ -24,26 +24,26 @@ public class ViewPagerAdapter extends PagerAdapter {
 		}
 	}
 
-	// 销毁position位置的界面
+	// 閿�姣乸osition浣嶇疆鐨勭晫闈�
 	@Override
 	public void destroyItem(View view, int position, Object obj) {
 		((ViewPager) view).removeView(list.get(position));
 	}
 
-	// 获取当前窗体界面数
+	// 鑾峰彇褰撳墠绐椾綋鐣岄潰鏁�
 	@Override
 	public int getCount() {
 		return list.size();
 	}
 
-	// 初始化position位置的界面
+	// 鍒濆鍖杙osition浣嶇疆鐨勭晫闈�
 	@Override
 	public Object instantiateItem(View view, int position) {
 		((ViewPager) view).addView(list.get(position));
 		return list.get(position);
 	}
 
-	// 判断View和对象是否为同一个View
+	// 鍒ゆ柇View鍜屽璞℃槸鍚︿负鍚屼竴涓猇iew
 	@Override
 	public boolean isViewFromObject(View arg0, Object arg1) {
 		return arg0 == arg1;
@@ -64,13 +64,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 		return null;
 	}
 
-	@Override
-	public void unregisterDataSetObserver(DataSetObserver observer) {
-		// TODO Auto-generated method stub	
-		if (observer != null) {
-			super.unregisterDataSetObserver(observer);
-		}
-	}
 
 	@Override
 	public void startUpdate(View arg0) {
