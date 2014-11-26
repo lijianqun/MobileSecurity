@@ -70,13 +70,12 @@ public class VirusActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_virus);
-		iv_scan = (ImageView) findViewById(R.id.iv_scan);
+		
 		progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
 		ll_container = (LinearLayout) findViewById(R.id.ll_container);
 		tv_scan_status = (TextView) findViewById(R.id.tv_scan_status);
-		RotateAnimation ra = new RotateAnimation(0, 360,
-				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-				0.5f);
+		iv_scan = (ImageView) findViewById(R.id.iv_scan);
+		RotateAnimation ra = new RotateAnimation(0, 360,Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
 		ra.setDuration(1000);
 		ra.setRepeatCount(Animation.INFINITE);
 		iv_scan.startAnimation(ra);

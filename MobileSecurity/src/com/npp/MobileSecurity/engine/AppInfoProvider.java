@@ -35,15 +35,6 @@ public class AppInfoProvider {
 			Drawable app_icon = packinfo.applicationInfo.loadIcon(pm);// 应用图标
 			String app_name = packinfo.applicationInfo.loadLabel(pm).toString();// 应用名称
 
-			/*
-			 * int flags = packinfo.applicationInfo.flags;//应用程序信息的标记 相当于用户提交的答卷
-			 * if ((flags & ApplicationInfo.FLAG_SYSTEM) == 0) { // 用户程序
-			 * appInfo.setUserApp(true); } else { // 系统程序
-			 * appInfo.setUserApp(false); } if ((flags &
-			 * ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0) { // 手机的内存
-			 * appInfo.setInRom(true); } else { // 手机外存储设备
-			 * appInfo.setInRom(false); }
-			 */
 			// 获取应用程序是否是第三方应用程序
 			appInfo.setUserApp(filterApp(packinfo.applicationInfo));
 			appInfo.setApp_icon(app_icon);

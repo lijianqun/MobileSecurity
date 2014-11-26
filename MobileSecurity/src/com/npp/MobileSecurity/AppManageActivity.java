@@ -343,6 +343,5 @@ public class AppManageActivity extends Activity {
 		TextView tv_sys_version;
 		TextView tv_sysName;
 		ImageView iv_sys_icon;
-
 	}
 }

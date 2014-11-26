@@ -6,4 +6,6 @@
     <color name="black_color">#000000</color>
     <color name="writer_color">#FFFFFF</color>
     <color name="main_bg" >#15A0F5</color>
+    <color name="whole_bg_color">#dedede</color>
+    <color name="wholepage_bg_color">#ffededed</color>
 </resources>

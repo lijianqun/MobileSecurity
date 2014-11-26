@@ -53,8 +53,8 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home_activity);
 		list_home = (GridView) findViewById(R.id.list_home);
-		anim_rotation=(ImageView) findViewById(R.id.anim_rotation);
-		anim_main=(ImageView) findViewById(R.id.anim_main);
+		anim_rotation = (ImageView) findViewById(R.id.anim_rotation);
+		anim_main = (ImageView) findViewById(R.id.anim_main);
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		adapter = new Myadapter();
 		list_home.setAdapter(adapter);
@@ -65,27 +65,26 @@ public class HomeActivity extends Activity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				switch (position) {
-				case 8://设置中心
+				case 8:// 设置中心
 					intent = new Intent(HomeActivity.this,
 							SettingActivity.class);
 					startActivity(intent);
 					break;
-				case 6://缓存清理
+				case 6:// 缓存清理
 					intent = new Intent(HomeActivity.this,
 							ClearCacheActivity.class);
 					startActivity(intent);
 					break;
-				case 5://病毒查杀
-					intent = new Intent(HomeActivity.this,
-							VirusActivity.class);
+				case 5:// 病毒查杀
+					intent = new Intent(HomeActivity.this, VirusActivity.class);
 					startActivity(intent);
 					break;
-				case 2://病毒查杀
+				case 2:// 病毒查杀
 					intent = new Intent(HomeActivity.this,
 							AppManageActivity.class);
 					startActivity(intent);
 					break;
-				case 3://进程管理
+				case 3:// 进程管理
 					intent = new Intent(HomeActivity.this,
 							TaskManageAcivity.class);
 					startActivity(intent);
@@ -100,10 +99,14 @@ public class HomeActivity extends Activity {
 
 			}
 		});
-		Animation hyperspaceJumpAnimation=AnimationUtils.loadAnimation(this, R.anim.av_main_rotation);
+
+		// 旋转动画
+		Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this,
+				R.anim.av_main_rotation);
 		anim_rotation.startAnimation(hyperspaceJumpAnimation);
-		Animation hyperspaceJump=AnimationUtils.loadAnimation(this, R.anim.av_main_bright);
-		anim_main.startAnimation(hyperspaceJump);
+		// 放大动画
+		Animation hyperspaceJump = AnimationUtils.loadAnimation(this,
+				R.anim.av_main_bright);
 		anim_main.startAnimation(hyperspaceJump);
 	}
 
